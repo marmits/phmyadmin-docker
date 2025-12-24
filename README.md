@@ -1,4 +1,4 @@
-## PhpMyAdmin (DOCKER)
+## 🐋 PhpMyAdmin
 ### Connexion
 http://localhost:9080/
 ```
