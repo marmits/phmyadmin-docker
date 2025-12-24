@@ -1,5 +1,6 @@
 ## PhpMyAdmin (DOCKER)
-### Connextion
+### Connexion
+http://localhost:9080/
 ```
 Serveur : pma_mariadb
 Utilisateur : root
