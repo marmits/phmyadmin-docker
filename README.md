@@ -76,7 +76,7 @@ $cfg['Servers'][$i]['AllowNoPassword'] = false;
 /* SSH TUNNEL */
 $i++;
 $cfg['Servers'][$i]['verbose'] = 'VPS via SSH (Docker)';
-$cfg['Servers'][$i]['host'] = 'mariadb-ssh-tunnel'; // ou l'ip du container ssh-tunnel
+$cfg['Servers'][$i]['host'] = 'mariadb-marmits-ssh-tunnel'; // ou l'ip du container ssh-tunnel
 $cfg['Servers'][$i]['port'] = getenv('LOCAL_PORT') ?: 33007;
 $cfg['Servers'][$i]['auth_type'] = 'cookie';
 $cfg['Servers'][$i]['connect_type'] = 'tcp';
