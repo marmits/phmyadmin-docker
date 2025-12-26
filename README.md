@@ -96,3 +96,40 @@ $cfg['Servers'][$i]['ssl_verify'] = false;
 
 ### Sécurité renforcée
 prévoir un durcissement SSH (AllowTcpForwarding + PermitOpen)
+
+### HOTE APACHE REVERSE PROXY
+Ex:
+```
+<IfModule mod_ssl.c>
+<VirtualHost *:443>
+    ServerName phpmyadmin.local
+
+    ErrorLog  /var/log/apache2/phpmyadmin_proxy_error.log
+    CustomLog /var/log/apache2/phpmyadmin_proxy_access.log combined
+
+
+    SSLEngine on
+    SSLCertificateFile    /etc/ssl/apache2/machine.crt
+    SSLCertificateKeyFile /etc/ssl/apache2/machine.key
+
+    # --- Reverse proxy ---
+    ProxyRequests Off
+    ProxyPreserveHost On
+    SSLProxyEngine On
+
+    # Indique au backend qu'on est en HTTPS côté client
+    RequestHeader set X-Forwarded-Proto "https"
+    RequestHeader set X-Forwarded-Port "443"
+
+    ProxyPass        / http://localhost:9080/
+    ProxyPassReverse / http://localhost:9080/
+
+</VirtualHost>
+</IfModule>
+
+<VirtualHost *:80>
+    ServerName phpmyadmin.local
+    Redirect permanent / https://phpmyadmin.local/
+</VirtualHost>
+```
+
