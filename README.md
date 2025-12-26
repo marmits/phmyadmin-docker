@@ -70,7 +70,7 @@ $cfg['Servers'][$i]['host'] = '192.168.1.99';  // Votre IP LAN
 $cfg['Servers'][$i]['port'] = '3306';
 $cfg['Servers'][$i]['user'] = 'docker_user';
 $cfg['Servers'][$i]['password'] = '123456';
-$cfg['Servers'][$i]['auth_type'] = 'cookie';
+$cfg['Servers'][$i]['auth_type'] = 'config';
 $cfg['Servers'][$i]['AllowNoPassword'] = false;
 
 /* SSH TUNNEL */
@@ -133,3 +133,8 @@ Ex:
 </VirtualHost>
 ```
 
+Dans le fichier `config.user.inc.php` :  
+```
+$cfg['ForceSSL'] = true;
+$cfg['PmaAbsoluteUri'] = 'https://phpmyadmin.local/';
+```
